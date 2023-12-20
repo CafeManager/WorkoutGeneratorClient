@@ -1,25 +1,213 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import placeholderImage from "./static/frame_placeholder.jpg";
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    return (
+        <div className="flex-wrapper">
+            <div className="App background-primary app-text-primary">
+                <nav class="navbar navbar-expand-lg ">
+                    <div class="container-fluid">
+                        <a href="#"> Workout Generator </a>
+                        <button
+                            class="navbar-toggler"
+                            type="button"
+                            data-bs-toggle="collapse"
+                            data-bs-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent"
+                            aria-expanded="false"
+                            aria-label="Toggle navigation"
+                        >
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div
+                            class="collapse navbar-collapse"
+                            id="navbarSupportedContent"
+                        >
+                            {/* <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link active"
+                                    aria-current="page"
+                                    href="#"
+                                >
+                                    Home
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" href="#">
+                                    Link
+                                </a>
+                            </li>
+                            <li class="nav-item dropdown">
+                                <a
+                                    class="nav-link dropdown-toggle"
+                                    href="#"
+                                    id="navbarDropdown"
+                                    role="button"
+                                    data-bs-toggle="dropdown"
+                                    aria-expanded="false"
+                                >
+                                    Dropdown
+                                </a>
+                                <ul
+                                    class="dropdown-menu"
+                                    aria-labelledby="navbarDropdown"
+                                >
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            Action
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            Another action
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <hr class="dropdown-divider" />
+                                    </li>
+                                    <li>
+                                        <a class="dropdown-item" href="#">
+                                            Something else here
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li class="nav-item">
+                                <a
+                                    class="nav-link disabled"
+                                    href="#"
+                                    tabindex="-1"
+                                    aria-disabled="true"
+                                >
+                                    Disabled
+                                </a>
+                            </li>
+                        </ul> */}
+                            <form class="d-flex ms-auto">
+                                <a
+                                    style={{
+                                        textDecoration: "none",
+                                        margin: ".2rem",
+                                    }}
+                                    href="/register"
+                                >
+                                    Register
+                                </a>
+                                <a
+                                    href="/login"
+                                    style={{
+                                        textDecoration: "none",
+                                        margin: ".2rem",
+                                    }}
+                                >
+                                    Login
+                                </a>
+                            </form>
+                        </div>
+                    </div>
+                </nav>
+                <h1> Welcome to Workout Generator </h1>
+                <div id="carouselExample" class="carousel slide w-25 mx-auto">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img
+                                src={placeholderImage}
+                                class="d-block w-100"
+                                alt="..."
+                            />
+                        </div>
+                        <div class="carousel-item">
+                            <img
+                                src={placeholderImage}
+                                class="d-block w-100"
+                                alt="..."
+                            />
+                        </div>
+                        <div class="carousel-item">
+                            <img
+                                src={placeholderImage}
+                                class="d-block w-100"
+                                alt="..."
+                            />
+                        </div>
+                    </div>
+                    <button
+                        class="carousel-control-prev"
+                        type="button"
+                        data-bs-target="#carouselExample"
+                        data-bs-slide="prev"
+                    >
+                        <span
+                            class="carousel-control-prev-icon"
+                            aria-hidden="true"
+                        ></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button
+                        class="carousel-control-next"
+                        type="button"
+                        data-bs-target="#carouselExample"
+                        data-bs-slide="next"
+                    >
+                        <span
+                            class="carousel-control-next-icon"
+                            aria-hidden="true"
+                        ></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+                <h1> Jump right into it with a preset workout </h1>
+                <ul class="list-group">
+                    <li class="list-group-item p-2">
+                        {" "}
+                        <span className="ms-3 float-start">My History</span>
+                    </li>
+                    <li class="list-group-item p-2">
+                        <span className="ms-3 float-start">My Exercises</span>
+                    </li>
+                    <li class="list-group-item p-2">
+                        <span className="ms-3 float-start">
+                            Workout Generator
+                        </span>
+                    </li>
+                </ul>
+            </div>
+            <footer class="row g-0 py-3 app-background-secondary">
+                <div class="col mb-3 text-center">
+                    <h5>Section</h5>
+                    <ul class="nav flex-column app-background-secondary">
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-muted">
+                                Home
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-muted">
+                                Features
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-muted">
+                                Pricing
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-muted">
+                                FAQs
+                            </a>
+                        </li>
+                        <li class="nav-item mb-2">
+                            <a href="#" class="nav-link p-0 text-muted">
+                                About
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </footer>
+        </div>
+    );
 }
 
 export default App;

@@ -2,6 +2,34 @@
   text-align: center;
 }
 
+.app-background-secondary {
+  background-color: #ACADBC;
+}
+
+.app-background-primary {
+  background-color: #473BF0;
+}
+
+.flex-wrapper {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+body,
+a {
+  color: #000500
+}
+
+.app-text-secondary {
+  color: #000500
+}
+
+.app-text-primary {
+  color: #000500
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -32,6 +60,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
