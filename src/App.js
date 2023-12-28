@@ -1,6 +1,8 @@
 import logo from "./logo.svg";
 import "./App.css";
-import placeholderImage from "./static/frame_placeholder.jpg";
+import { Routes, Route, Redirect, Link, BrowserRouter } from "react-router-dom";
+import Register from "./Register";
+import Home from "./Home";
 
 function App() {
     return (
@@ -108,72 +110,14 @@ function App() {
                         </div>
                     </div>
                 </nav>
-                <h1> Welcome to Workout Generator </h1>
-                <div id="carouselExample" class="carousel slide w-25 mx-auto">
-                    <div class="carousel-inner">
-                        <div class="carousel-item active">
-                            <img
-                                src={placeholderImage}
-                                class="d-block w-100"
-                                alt="..."
-                            />
-                        </div>
-                        <div class="carousel-item">
-                            <img
-                                src={placeholderImage}
-                                class="d-block w-100"
-                                alt="..."
-                            />
-                        </div>
-                        <div class="carousel-item">
-                            <img
-                                src={placeholderImage}
-                                class="d-block w-100"
-                                alt="..."
-                            />
-                        </div>
-                    </div>
-                    <button
-                        class="carousel-control-prev"
-                        type="button"
-                        data-bs-target="#carouselExample"
-                        data-bs-slide="prev"
-                    >
-                        <span
-                            class="carousel-control-prev-icon"
-                            aria-hidden="true"
-                        ></span>
-                        <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button
-                        class="carousel-control-next"
-                        type="button"
-                        data-bs-target="#carouselExample"
-                        data-bs-slide="next"
-                    >
-                        <span
-                            class="carousel-control-next-icon"
-                            aria-hidden="true"
-                        ></span>
-                        <span class="visually-hidden">Next</span>
-                    </button>
-                </div>
-                <h1> Jump right into it with a preset workout </h1>
-                <ul class="list-group">
-                    <li class="list-group-item p-2">
-                        {" "}
-                        <span className="ms-3 float-start">My History</span>
-                    </li>
-                    <li class="list-group-item p-2">
-                        <span className="ms-3 float-start">My Exercises</span>
-                    </li>
-                    <li class="list-group-item p-2">
-                        <span className="ms-3 float-start">
-                            Workout Generator
-                        </span>
-                    </li>
-                </ul>
             </div>
+
+            <BrowserRouter>
+                <Routes>
+                    <Route path="" element={<Home />} />
+                    <Route path="register" element={<Register />} />
+                </Routes>
+            </BrowserRouter>
             <footer class="row g-0 py-3 app-background-secondary">
                 <div class="col mb-3 text-center">
                     <h5>Section</h5>
