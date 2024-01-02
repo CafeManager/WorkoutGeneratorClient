@@ -3,11 +3,15 @@
 }
 
 .app-background-secondary {
-  background-color: #ACADBC;
+  background-color: #373434;
 }
 
 .app-background-primary {
-  background-color: #473BF0;
+  background-color: #eeede9;
+}
+
+.app-background-accent {
+  background-color: #35cbfe;
 }
 
 .flex-wrapper {
@@ -28,6 +32,10 @@ a {
 
 .app-text-primary {
   color: #000500
+}
+
+.app-title {
+  font-size: 2rem;
 }
 
 .App-logo {

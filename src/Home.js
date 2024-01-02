@@ -3,7 +3,9 @@ import placeholderImage from "./static/frame_placeholder.jpg";
 function Home() {
     return (
         <>
-            <h1 className="text-center"> Welcome to Workout Generator </h1>
+            <h1 className="text-center app-title">
+                Welcome to Workout Generator
+            </h1>
             <div id="carouselExample" class="carousel slide w-25 mx-auto">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -53,10 +55,10 @@ function Home() {
                     <span class="visually-hidden">Next</span>
                 </button>
             </div>
-            <h1 className="text-center">
+            <h1 className="text-center app-title">
                 Jump right into it with a preset workout
             </h1>
-            <ul class="list-group">
+            {/* <ul class="list-group">
                 <li class="list-group-item p-2">
                     <span className="ms-3 float-start">My History</span>
                 </li>
@@ -66,7 +68,28 @@ function Home() {
                 <li class="list-group-item p-2">
                     <span className="ms-3 float-start">Workout Generator</span>
                 </li>
-            </ul>
+            </ul> */}
+            <div className="row">
+                <div className="col text-center">
+                    <button className="btn app-background-accent">
+                        {" "}
+                        My History{" "}
+                    </button>
+                </div>
+                <div className="col text-center">
+                    <button className="btn app-background-accent">
+                        {" "}
+                        My Exercises{" "}
+                    </button>
+                </div>
+                <div className="col text-center">
+                    <button className="btn app-background-accent">
+                        {" "}
+                        Workout Generator{" "}
+                    </button>
+                </div>
+                
+            </div>
         </>
     );
 }

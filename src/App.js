@@ -120,21 +120,24 @@ function App() {
             </BrowserRouter>
             <footer class="row g-0 py-3 app-background-secondary">
                 <div class="col mb-3 text-center">
-                    <h5>Section</h5>
+                    <h5>Contact Information</h5>
                     <ul class="nav flex-column app-background-secondary">
                         <li class="nav-item mb-2">
                             <a href="#" class="nav-link p-0 text-muted">
-                                Home
+                                Email: cafemanager97@gmail.com
                             </a>
                         </li>
                         <li class="nav-item mb-2">
                             <a href="#" class="nav-link p-0 text-muted">
-                                Features
+                                Github: CafeManager
                             </a>
                         </li>
                         <li class="nav-item mb-2">
-                            <a href="#" class="nav-link p-0 text-muted">
-                                Pricing
+                            <a
+                                href="https://www.linkedin.com/in/kevin-flores-57a699175/"
+                                class="nav-link p-0 text-muted"
+                            >
+                                LinkedIn
                             </a>
                         </li>
                         <li class="nav-item mb-2">
