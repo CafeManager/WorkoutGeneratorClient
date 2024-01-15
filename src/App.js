@@ -3,30 +3,38 @@ import "./App.css";
 import { Routes, Route, Redirect, Link, BrowserRouter } from "react-router-dom";
 import Register from "./Register";
 import Home from "./Home";
+import WorkOutSession from "./WorkOutSession";
+import Login from "./Login";
+import WorkOutHistory from "./WorkOutHistory";
+import WorkOutGenerator from "./WorkOutGenerator";
 
 function App() {
     return (
-        <div className="flex-wrapper">
-            <div className="App background-primary app-text-primary">
-                <nav class="navbar navbar-expand-lg ">
-                    <div class="container-fluid">
-                        <a href="#"> Workout Generator </a>
-                        <button
-                            class="navbar-toggler"
-                            type="button"
-                            data-bs-toggle="collapse"
-                            data-bs-target="#navbarSupportedContent"
-                            aria-controls="navbarSupportedContent"
-                            aria-expanded="false"
-                            aria-label="Toggle navigation"
-                        >
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div
-                            class="collapse navbar-collapse"
-                            id="navbarSupportedContent"
-                        >
-                            {/* <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <BrowserRouter>
+            <div className="flex-wrapper">
+                <div className="App background-primary app-text-primary">
+                    <nav class="navbar navbar-expand-lg ">
+                        <div class="container-fluid">
+                            <Link to="/">
+                                <span> Workout Generator </span>{" "}
+                            </Link>
+
+                            <button
+                                class="navbar-toggler"
+                                type="button"
+                                data-bs-toggle="collapse"
+                                data-bs-target="#navbarSupportedContent"
+                                aria-controls="navbarSupportedContent"
+                                aria-expanded="false"
+                                aria-label="Toggle navigation"
+                            >
+                                <span class="navbar-toggler-icon"></span>
+                            </button>
+                            <div
+                                class="collapse navbar-collapse"
+                                id="navbarSupportedContent"
+                            >
+                                {/* <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                             <li class="nav-item">
                                 <a
                                     class="nav-link active"
@@ -87,73 +95,77 @@ function App() {
                                 </a>
                             </li>
                         </ul> */}
-                            <form class="d-flex ms-auto">
-                                <a
-                                    style={{
-                                        textDecoration: "none",
-                                        margin: ".2rem",
-                                    }}
-                                    href="/register"
-                                >
-                                    Register
-                                </a>
-                                <a
-                                    href="/login"
-                                    style={{
-                                        textDecoration: "none",
-                                        margin: ".2rem",
-                                    }}
-                                >
-                                    Login
-                                </a>
-                            </form>
+                                <form class="d-flex ms-auto">
+                                    <a
+                                        style={{
+                                            textDecoration: "none",
+                                            margin: ".2rem",
+                                        }}
+                                        href="/register"
+                                    >
+                                        Register
+                                    </a>
+                                    <a
+                                        href="/login"
+                                        style={{
+                                            textDecoration: "none",
+                                            margin: ".2rem",
+                                        }}
+                                    >
+                                        Login
+                                    </a>
+                                </form>
+                            </div>
                         </div>
-                    </div>
-                </nav>
-            </div>
-
-            <BrowserRouter>
-                <Routes>
-                    <Route path="" element={<Home />} />
-                    <Route path="register" element={<Register />} />
-                </Routes>
-            </BrowserRouter>
-            <footer class="row g-0 py-3 app-background-secondary">
-                <div class="col mb-3 text-center">
-                    <h5>Contact Information</h5>
-                    <ul class="nav flex-column app-background-secondary">
-                        <li class="nav-item mb-2">
-                            <a href="#" class="nav-link p-0 text-muted">
-                                Email: cafemanager97@gmail.com
-                            </a>
-                        </li>
-                        <li class="nav-item mb-2">
-                            <a href="#" class="nav-link p-0 text-muted">
-                                Github: CafeManager
-                            </a>
-                        </li>
-                        <li class="nav-item mb-2">
-                            <a
-                                href="https://www.linkedin.com/in/kevin-flores-57a699175/"
-                                class="nav-link p-0 text-muted"
-                            >
-                                LinkedIn
-                            </a>
-                        </li>
-                        <li class="nav-item mb-2">
-                            <a href="#" class="nav-link p-0 text-muted">
-                                FAQs
-                            </a>
-                        </li>
-                        <li class="nav-item mb-2">
-                            <a href="#" class="nav-link p-0 text-muted">
-                                About
-                            </a>
-                        </li>
-                    </ul>
+                    </nav>
                 </div>
-            </footer>
-        </div>
+                <div className="container text-center">
+                    <Routes>
+                        <Route path="" element={<Home />} />
+                        <Route path="register" element={<Register />} />
+                        <Route path="login" element={<Login />} />
+                        <Route path="workout" element={<WorkOutSession />} />
+                        <Route path="history" element={<WorkOutHistory />} />
+                        <Route path="generator" element={<WorkOutGenerator />} />
+                    </Routes>
+                </div>
+                <footer class="row g-0 py-3 app-background-secondary">
+                    <div class="col mb-3 text-center">
+                        <h5>Contact Information</h5>
+                        <ul class="nav flex-column app-background-secondary">
+                            <li class="nav-item mb-2">
+                                <a href="#" class="nav-link p-0 text-muted">
+                                    Email: cafemanager97@gmail.com
+                                </a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="#" class="nav-link p-0 text-muted">
+                                    Github: CafeManager
+                                </a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a
+                                    href="https://www.linkedin.com/in/kevin-flores-57a699175/"
+                                    class="nav-link p-0 text-muted"
+                                >
+                                    LinkedIn
+                                </a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="#" class="nav-link p-0 text-muted">
+                                    FAQs
+                                </a>
+                            </li>
+                            <li class="nav-item mb-2">
+                                <a href="#" class="nav-link p-0 text-muted">
+                                    About
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </footer>
+            </div>
+        </BrowserRouter>
     );
 }
 

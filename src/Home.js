@@ -1,4 +1,5 @@
 import placeholderImage from "./static/frame_placeholder.jpg";
+import { Link } from "react-router-dom";
 
 function Home() {
     return (
@@ -58,37 +59,29 @@ function Home() {
             <h1 className="text-center app-title">
                 Jump right into it with a preset workout
             </h1>
-            {/* <ul class="list-group">
-                <li class="list-group-item p-2">
-                    <span className="ms-3 float-start">My History</span>
-                </li>
-                <li class="list-group-item p-2">
-                    <span className="ms-3 float-start">My Exercises</span>
-                </li>
-                <li class="list-group-item p-2">
-                    <span className="ms-3 float-start">Workout Generator</span>
-                </li>
-            </ul> */}
+
             <div className="row">
                 <div className="col text-center">
-                    <button className="btn app-background-accent">
-                        {" "}
-                        My History{" "}
-                    </button>
+                    <Link to="history">
+                        <button className="btn app-background-accent">
+                            My History
+                        </button>
+                    </Link>
                 </div>
                 <div className="col text-center">
-                    <button className="btn app-background-accent">
-                        {" "}
-                        My Exercises{" "}
-                    </button>
+                    <Link to="Workout">
+                        <button className="btn app-background-accent">
+                            My Exercises
+                        </button>
+                    </Link>
                 </div>
                 <div className="col text-center">
-                    <button className="btn app-background-accent">
-                        {" "}
-                        Workout Generator{" "}
-                    </button>
+                    <Link to="generator">
+                        <button className="btn app-background-accent">
+                            Workout Generator
+                        </button>
+                    </Link>
                 </div>
-                
             </div>
         </>
     );

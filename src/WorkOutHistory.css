@@ -1,0 +1,19 @@
+.history-grid {
+    display: grid;
+    grid-template-columns: 4rem 4rem 4rem 4rem 4rem 4rem;
+    grid-template-rows: 4rem 4rem 4rem 4rem 4rem;
+    gap: 1rem;
+    justify-content: center;
+}
+
+.history-grid-item-green {
+    background-color: greenyellow;
+    width: 100%;
+    height: 100%;
+}
+
+.history-grid-item-gray {
+    background-color: gray;
+    width: 100%;
+    height: 100%;
+}

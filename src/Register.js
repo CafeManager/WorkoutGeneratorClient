@@ -30,71 +30,63 @@ function Register() {
                 onSubmit={handleSubmit}
                 style={{ marginLeft: "25%" }}
             >
-                <div class="mb-3">
-                    <label
-                        for="username"
-                        className="form-label w-100 text-start"
-                    >
+                <div className="form-group mb-3" style={{ textAlign: "start" }}>
+                    <label for="email" className=" form-label">
+                        Email address
+                    </label>
+                    <input
+                        type="email"
+                        class="form-control"
+                        id="email"
+                        placeholder="Enter email"
+                    />
+                </div>
+                <div class="form-group mb-3" style={{ textAlign: "start" }}>
+                    <label className=" form-label" for="username">
                         Username
                     </label>
                     <input
-                        type="text"
-                        onChange={handleChange}
-                        className="form-control"
+                        type="username"
+                        class="form-control"
                         id="username"
-                        name="username"
+                        placeholder="Enter username"
                     />
                 </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label w-100 text-start">
+                <div class="form-group mb-3" style={{ textAlign: "start" }}>
+                    <label className=" form-label" for="password">
                         Password
                     </label>
                     <input
                         type="password"
-                        onChange={handleChange}
-                        className="form-control"
+                        class="form-control"
                         id="password"
-                        name="password"
+                        placeholder="Enter password"
                     />
                 </div>
-                <div class="mb-3">
-                    <label for="firstname" class="form-label w-100 text-start">
+                <div class="form-group mb-3" style={{ textAlign: "start" }}>
+                    <label className=" form-label" for="first-name">
                         First Name
                     </label>
                     <input
                         type="text"
-                        onChange={handleChange}
                         class="form-control"
-                        id="firstname"
-                        name="firstName"
+                        id="first-name"
+                        placeholder="Enter first name"
                     />
                 </div>
-                <div class="mb-3">
-                    <label for="lastname" class="form-label w-100 text-start">
+                <div class="form-group mb-3" style={{ textAlign: "start" }}>
+                    <label className=" form-label" for="last-name">
                         Last Name
                     </label>
                     <input
                         type="text"
-                        onChange={handleChange}
                         class="form-control"
-                        id="lastname"
-                        name="lastName"
-                    />
-                </div>
-                <div class="mb-3">
-                    <label for="email" class="form-label w-100 text-start">
-                        Email
-                    </label>
-                    <input
-                        type="email"
-                        onChange={handleChange}
-                        class="form-control"
-                        id="email"
-                        name="email"
+                        id="last-name"
+                        placeholder="Enter last name"
                     />
                 </div>
 
-                <button type="submit" class="btn btn-primary">
+                <button type="submit" className="btn btn-primary">
                     Submit
                 </button>
             </form>

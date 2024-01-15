@@ -1,0 +1,11 @@
+.work-out-grid {
+    display: grid;
+    grid-template-columns: 3fr 1fr 1fr 1fr;
+    gap: 1rem;
+}
+
+.work-out-item {
+    width: 4rem;
+    margin-left: auto;
+    margin-right: auto;
+}
