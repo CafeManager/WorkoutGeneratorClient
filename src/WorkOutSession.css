@@ -1,6 +1,6 @@
 .work-out-grid {
     display: grid;
-    grid-template-columns: 3fr 1fr 1fr 1fr;
+    grid-template-columns: 2.75fr .25fr .25fr .25fr;
     gap: 1rem;
 }
 

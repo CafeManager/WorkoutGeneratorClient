@@ -35,9 +35,9 @@ class WorkoutApi {
 
     /** Get past 30 workouts */
     static async getPastWorkouts(username) {
-        let res = await this.request(`user/${username}`);
-        console.log(res);
-        return res.company;
+        let res = await this.request(`workouts/last30/${username}`);
+
+        return res.data;
     }
 
     static async getWorkoutSession(id) {
@@ -76,6 +76,19 @@ class WorkoutApi {
     static async loginUser(body) {
         let res = await this.request(`auth/token`, body, "POST");
         return res.token;
+    }
+
+    static async postWorkOutSession(body) {
+        console.log("reach");
+        console.log(body);
+        let dataPrep = {
+            exercises: body,
+            username: "testuser",
+            time: new Date().toDateString(),
+        };
+        let res = await this.request(`workouts/add-session`, dataPrep, "POST");
+        console.log(res);
+        return { response: "OK" };
     }
 
     static async setToken(token) {

@@ -1,24 +1,27 @@
 import { useState } from "react";
 import WorkoutApi from "../api";
-import useLocalStorage from "./useLocalStorage";
 
 function useWorkoutAPI() {
     // const [getLocalItem, setLocalItem, clearItem] = useLocalStorage();
 
     // const [username, setUsername] = useState(getLocalItem("workoutUsername"));
 
-    // function clearUserInfo() {
-    //     clearItem("joblyToken");
-    //     clearItem("joblyUsername");
+    // function removeToken() {
+    //     localStorage.removeItem("workOutToken");
+    //     localStorage.removeItem("workOutUsername");
     //     setUsername("");
     // }
 
-    // function addUserToken(username, token) {
-    //     setLocalItem("joblyToken", token);
-    //     setLocalItem("joblyUsername", username);
-    // }
+    function handleAPILogIn(username, token) {
+        localStorage.setItem("workOutToken", token);
+        localStorage.setItem("workOutUsername", username);
+    }
+    function handleAPILogOut() {
+        localStorage.removeItem("workOutToken");
+        localStorage.removeItem("workOutUsername");
+    }
 
-    return [WorkoutApi];
+    return [handleAPILogIn, handleAPILogOut, WorkoutApi];
 }
 
 export default useWorkoutAPI;
