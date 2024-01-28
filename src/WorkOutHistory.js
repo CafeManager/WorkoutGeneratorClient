@@ -1,17 +1,15 @@
 import { useState } from "react";
 import "./WorkOutHistory.css";
 import { useEffect } from "react";
+import { Link } from "react-router-dom";
 import useWorkoutAPI from "./hooks/useWorkOutAPI";
 
-function WorkOutHistory() {
-    const [handleAPILogIn, handleAPILogOut, WorkoutApi] = useWorkoutAPI();
-
+function WorkOutHistory({ WorkoutApi }) {
     const [last30Days, setLast30Days] = useState([
         false,
         false,
         false,
         false,
-        true,
         false,
         false,
         false,
@@ -19,7 +17,8 @@ function WorkOutHistory() {
         false,
         false,
         false,
-        true,
+        false,
+        false,
         false,
         false,
         false,
@@ -42,8 +41,6 @@ function WorkOutHistory() {
     const [totalDay, setTotalDays] = useState(0);
 
     useEffect(() => {
-        console.log("useEffect");
-        //make an api call to retrieve past 30 days from a user
         async function getDays() {
             let datesExercised = await WorkoutApi.getPastWorkouts("testuser");
             let daysDone = [];
@@ -59,16 +56,15 @@ function WorkOutHistory() {
                 let dateCheck = new Date();
                 dateCheck.setDate(dateCheck.getDate() - count).toLocaleString();
 
-                //daysDone.includes(dateCheck.toLocaleDateString("en-US"))
-                console.log(checkIfInArray(daysDone, dateCheck));
                 const location = checkIfInArray(daysDone, dateCheck);
+
                 if (location) {
                     calendar.push({
                         date: dateCheck
                             .toLocaleDateString("en-US")
                             .slice(0, -5),
                         done: true,
-                        id: dateCheck[location],
+                        id: location["id"],
                     });
                 } else {
                     calendar.push({
@@ -81,7 +77,6 @@ function WorkOutHistory() {
             }
 
             const total = calendar.reduce((acc, curr) => {
-                console.log(curr);
                 return curr["done"] ? acc + 1 : acc;
             }, 0);
 
@@ -107,7 +102,15 @@ function WorkOutHistory() {
                 {last30Days.map((e) => {
                     return e["done"] ? (
                         <span className="history-grid-item-green">
-                            <p className="text-end me-1">{e["date"]}</p>
+                            {console.log(e)}
+                            <Link
+                                to={`/workout/${e["id"]}`}
+                                className="remove-decoration"
+                            >
+                                <p className="text-end me-1 item-tag">
+                                    {e["date"]}
+                                </p>
+                            </Link>
                         </span>
                     ) : (
                         <span className="history-grid-item-grey">

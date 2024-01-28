@@ -2,10 +2,16 @@
     display: grid;
     grid-template-columns: 2.75fr .25fr .25fr .25fr;
     gap: 1rem;
+    align-items: center;
 }
 
 .work-out-item {
     width: 4rem;
     margin-left: auto;
     margin-right: auto;
+}
+
+.work-out-exercise {
+    border: 1px solid #373434;
+    border-radius: 4px;
 }

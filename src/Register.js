@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-
+import useWorkoutAPI from "./hooks/useWorkOutAPI";
+import { useAuth } from "./AuthContext";
 const INITIAL_DATA = {
     username: "",
     password: "",
@@ -12,7 +13,9 @@ const INITIAL_DATA = {
 function Register() {
     const [form, setForm] = useState(INITIAL_DATA);
     const navigate = useNavigate();
+    const [handleAPILogIn, handleAPILogOut, WorkoutApi] = useWorkoutAPI();
 
+    const { setUser, user } = useAuth();
     const handleChange = (e) => {
         const { name, value } = e.target;
         setForm((fData) => ({ ...fData, [name]: value }));
@@ -20,6 +23,9 @@ function Register() {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        let token = await WorkoutApi.registerAccount(form);
+        await handleAPILogIn(form["username"], token);
+        setUser(form["username"]);
         return navigate("/");
     };
     return (
@@ -37,8 +43,10 @@ function Register() {
                     <input
                         type="email"
                         class="form-control"
-                        id="email"
+                        name="email"
                         placeholder="Enter email"
+                        onChange={handleChange}
+                        value={form["email"]}
                     />
                 </div>
                 <div class="form-group mb-3" style={{ textAlign: "start" }}>
@@ -48,8 +56,10 @@ function Register() {
                     <input
                         type="username"
                         class="form-control"
-                        id="username"
+                        name="username"
                         placeholder="Enter username"
+                        onChange={handleChange}
+                        value={form["username"]}
                     />
                 </div>
                 <div class="form-group mb-3" style={{ textAlign: "start" }}>
@@ -59,8 +69,10 @@ function Register() {
                     <input
                         type="password"
                         class="form-control"
-                        id="password"
+                        name="password"
                         placeholder="Enter password"
+                        onChange={handleChange}
+                        value={form["password"]}
                     />
                 </div>
                 <div class="form-group mb-3" style={{ textAlign: "start" }}>
@@ -70,8 +82,10 @@ function Register() {
                     <input
                         type="text"
                         class="form-control"
-                        id="first-name"
+                        name="firstName"
                         placeholder="Enter first name"
+                        onChange={handleChange}
+                        value={form["firstName"]}
                     />
                 </div>
                 <div class="form-group mb-3" style={{ textAlign: "start" }}>
@@ -81,12 +95,14 @@ function Register() {
                     <input
                         type="text"
                         class="form-control"
-                        id="last-name"
+                        name="lastName"
                         placeholder="Enter last name"
+                        onChange={handleChange}
+                        value={form["lastName"]}
                     />
                 </div>
 
-                <button type="submit" className="btn btn-primary">
+                <button type="submit" className="btn app-background-accent">
                     Submit
                 </button>
             </form>

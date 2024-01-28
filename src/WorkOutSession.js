@@ -1,12 +1,13 @@
 import "./WorkOutSession.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import plus from "./static/add_circle_black_24dp.svg";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate, useLocation, useParams } from "react-router-dom";
 import useWorkoutAPI from "./hooks/useWorkOutAPI";
 
 function prepData(exercises) {
     let preppedData = {};
     // console.log(objectPerExercise);
+    console.log(exercises);
     let objectPerExercise = exercises.map((e) => {
         return { name: e, sets: "", reps: "", weight: "" };
     });
@@ -19,12 +20,15 @@ function prepData(exercises) {
     return objectPerExercise;
 }
 
+function prepAPIData() {}
+
 function WorkOutSession({ isDone = false }) {
     const location = useLocation();
 
     const exercises = location.state;
+    const { id } = useParams();
 
-    const [form, setForm] = useState(prepData(exercises));
+    const [form, setForm] = useState([]);
     const [handleAPILogIn, handleAPILogOut, WorkoutApi] = useWorkoutAPI();
 
     let navigate = useNavigate();
@@ -32,14 +36,23 @@ function WorkOutSession({ isDone = false }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         let x = apiDataPrep(form);
-        // await WorkoutApi.postWorkOutSession(data);
         return navigate("/");
     };
 
+    useEffect(() => {
+        console.log(id);
+        async function processComponent() {
+            if (id) {
+                let workout = await WorkoutApi.getWorkoutSession(id);
+                setForm(workout);
+            } else {
+                setForm(prepData(exercises));
+            }
+        }
+        processComponent();
+    }, []);
+
     async function apiDataPrep(data) {
-        // let dataPrep = {};
-        // let keys = Object.keys(data);
-        // console.log(data);
         await WorkoutApi.postWorkOutSession(data);
     }
 
@@ -62,9 +75,6 @@ function WorkOutSession({ isDone = false }) {
         }
         let newForm = [];
         for (let obj of form) {
-            // if(itemName.includes("-sets")){}
-            // if(itemName.includes("-reps")){}
-            // if(itemName.includes("-weight")){}
             if (obj["name"] == itemName) {
                 obj[itemType] = value;
                 newForm.push(obj);
@@ -85,12 +95,11 @@ function WorkOutSession({ isDone = false }) {
                     <span> kg/lbs </span>
 
                     {form.map((e) => {
-                        console.log(e);
                         return (
                             <>
-                                <button className="btn btn-outline-secondary">
+                                <span className="work-out-exercise m-1 p-1">
                                     {e["name"]}
-                                </button>
+                                </span>
                                 <input
                                     type="text"
                                     className="form-control work-out-item"
@@ -118,7 +127,9 @@ function WorkOutSession({ isDone = false }) {
                             </>
                         );
                     })}
-                    <button className="btn btn-primary"> Submit </button>
+                    {form.length > 0 ? (
+                        <button className="btn btn-primary"> Submit </button>
+                    ) : null}
                 </div>
             </form>
         );
@@ -129,38 +140,18 @@ function WorkOutSession({ isDone = false }) {
             <div className="work-out-grid">
                 <span> </span>
                 <span> Reps </span>
-                <span> lbs </span>
-
-                <button className="btn btn-outline-secondary">
-                    Overhead Tricep Preaqss
-                </button>
-                <input
-                    type="text"
-                    className="form-control work-out-item"
-                    placeholder="10"
-                ></input>
-                <input
-                    type="text"
-                    className="form-control work-out-item"
-                    placeholder="10"
-                ></input>
-                {exercises.map((e) => {
+                <span> Sets </span>
+                <span> kgs/lbs </span>
+                {form.map((e) => {
                     return (
                         <>
-                            <button className="btn btn-outline-secondary">
-                                {" "}
-                                {e}{" "}
-                            </button>
-                            <input
-                                type="text"
-                                className="form-control work-out-item"
-                                placeholder="10"
-                            ></input>
-                            <input
-                                type="text"
-                                className="form-control work-out-item"
-                                placeholder="10"
-                            ></input>
+                            <span className="work-out-exercise m-1 p-1">
+                                {e["name"]}
+                            </span>
+                            <span> {e["reps"]} </span>
+
+                            <span> {e["total_sets"]} </span>
+                            <span> {e["total_weight"]} </span>
                         </>
                     );
                 })}
@@ -171,7 +162,7 @@ function WorkOutSession({ isDone = false }) {
     return (
         <>
             <h1> Workout </h1>
-            {isDone ? (
+            {form.length > 0 && id ? (
                 <CompletedSession> </CompletedSession>
             ) : (
                 <ProgressForm></ProgressForm>

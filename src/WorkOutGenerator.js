@@ -42,7 +42,7 @@ function WorkOutGenerator() {
     const [apiWorkOutParts, setApiWorkOutParts] = useState({});
 
     const handleBodyChange = (e) => {
-        // e.preventDefault();
+
         let { name, value } = e.target;
 
         setBodyParts((fData) => {
@@ -51,11 +51,8 @@ function WorkOutGenerator() {
     };
 
     const handleEquipmentChange = (e) => {
-        // e.preventDefault();
+
         let { name, value } = e.target;
-        console.log(name);
-        console.log(value);
-        console.log(!value);
 
         setEquipmentParts((fData) => {
             return { ...fData, [name]: value };
@@ -106,8 +103,8 @@ function WorkOutGenerator() {
 
     return (
         <>
-            <form onSubmit={handleAPISubmit}>
-                <div className="row app-background-secondary">
+            <form onSubmit={handleAPISubmit} className="mb-3 p-3">
+                <div className="row">
                     <div className="col">
                         {Object.keys(bodyParts).map((e) => {
                             return (
@@ -157,34 +154,35 @@ function WorkOutGenerator() {
                 </div>
             </form>
 
-            <form onSubmit={handleFormSubmit}>
-                {apiWorkOutParts
-                    ? Object.keys(apiWorkOutParts).map((e) => {
-                          console.log(e);
-                          console.log(apiWorkOutParts[e]);
-                          return (
-                              <div class="mb-3">
-                                  <label
-                                      for={e}
-                                      class="form-check-label w-75 text-start"
-                                  >
-                                      {e}
-                                  </label>
-                                  <input
-                                      type="checkbox"
-                                      class="form-check-input"
-                                      id={e}
-                                      name={e}
-                                      onChange={handleAPIWorkoutsChange}
-                                  />
-                              </div>
-                          );
-                      })
-                    : null}
-                <button className="text-start btn btn-primary">
-                    {" "}
-                    start workout{" "}
-                </button>
+            <form className="w-50 mx-auto mb-3" onSubmit={handleFormSubmit}>
+                {apiWorkOutParts ? (
+                    <>
+                        {Object.keys(apiWorkOutParts).map((e) => {
+                            console.log(e);
+                            console.log(apiWorkOutParts[e]);
+                            return (
+                                <div class="mb-3">
+                                    <label
+                                        for={e}
+                                        class="form-check-label w-75 text-start"
+                                    >
+                                        {e}
+                                    </label>
+                                    <input
+                                        type="checkbox"
+                                        class="form-check-input"
+                                        id={e}
+                                        name={e}
+                                        onChange={handleAPIWorkoutsChange}
+                                    />
+                                </div>
+                            );
+                        })}{" "}
+                        <button className="text-start btn btn-primary">
+                            start workout
+                        </button>
+                    </>
+                ) : null}
             </form>
         </>
     );

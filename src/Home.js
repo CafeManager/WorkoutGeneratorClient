@@ -1,4 +1,7 @@
 import placeholderImage from "./static/frame_placeholder.jpg";
+import barbells from "./static/barbells.jpeg";
+import cables from "./static/cables.jpg";
+import dumbells from "./static/dumbells.jpg";
 import { Link } from "react-router-dom";
 
 function Home() {
@@ -10,25 +13,13 @@ function Home() {
             <div id="carouselExample" class="carousel slide w-25 mx-auto">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img
-                            src={placeholderImage}
-                            class="d-block w-100"
-                            alt="..."
-                        />
+                        <img src={barbells} class="d-block w-100" alt="..." />
                     </div>
                     <div class="carousel-item">
-                        <img
-                            src={placeholderImage}
-                            class="d-block w-100"
-                            alt="..."
-                        />
+                        <img src={cables} class="d-block w-100" alt="..." />
                     </div>
                     <div class="carousel-item">
-                        <img
-                            src={placeholderImage}
-                            class="d-block w-100"
-                            alt="..."
-                        />
+                        <img src={dumbells} class="d-block w-100" alt="..." />
                     </div>
                 </div>
                 <button
@@ -57,7 +48,7 @@ function Home() {
                 </button>
             </div>
             <h1 className="text-center app-title">
-                Jump right into it with a preset workout
+                {/* Jump right into it with a preset workout */}
             </h1>
 
             <div className="row">
@@ -68,13 +59,13 @@ function Home() {
                         </button>
                     </Link>
                 </div>
-                <div className="col text-center">
+                {/* <div className="col text-center">
                     <Link to="Workout">
                         <button className="btn app-background-accent">
                             My Exercises
                         </button>
                     </Link>
-                </div>
+                </div> */}
                 <div className="col text-center">
                     <Link to="generator">
                         <button className="btn app-background-accent">

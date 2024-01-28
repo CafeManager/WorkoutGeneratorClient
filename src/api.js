@@ -34,16 +34,18 @@ class WorkoutApi {
     // Individual API routes
 
     /** Get past 30 workouts */
-    static async getPastWorkouts(username) {
-        let res = await this.request(`workouts/last30/${username}`);
+    static async getPastWorkouts() {
+        let res = await this.request(
+            `workouts/last30/${localStorage.getItem("workOutUsername")}`
+        );
 
         return res.data;
     }
 
     static async getWorkoutSession(id) {
-        let res = await this.request(`user/${id}`);
+        let res = await this.request(`workouts/${id}`);
         console.log(res);
-        return res.company;
+        return res.data;
     }
 
     static async getWorkOutByEquipment() {
@@ -74,39 +76,29 @@ class WorkoutApi {
     }
 
     static async loginUser(body) {
+        console.log(body);
         let res = await this.request(`auth/token`, body, "POST");
         return res.token;
     }
 
     static async postWorkOutSession(body) {
-        console.log("reach");
-        console.log(body);
         let dataPrep = {
             exercises: body,
-            username: "testuser",
+            username: localStorage.getItem("workOutUsername"),
             time: new Date().toDateString(),
         };
         let res = await this.request(`workouts/add-session`, dataPrep, "POST");
-        console.log(res);
         return { response: "OK" };
-    }
-
-    static async setToken(token) {
-        WorkoutApi.token = token;
-    }
-
-    static async clearToken() {
-        WorkoutApi.token = "";
     }
 }
 
-WorkoutApi.token = localStorage.getItem("joblyToken");
+WorkoutApi.token = localStorage.getItem("workOutToken");
 
 // for now, put token ("testuser" / "password" on class)
-WorkoutApi.token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
-    "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
-    "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
+// WorkoutApi.token =
+//     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZ" +
+//     "SI6InRlc3R1c2VyIiwiaXNBZG1pbiI6ZmFsc2UsImlhdCI6MTU5ODE1OTI1OX0." +
+//     "FtrMwBQwe6Ue-glIFgz_Nf8XxRT2YecFCiSpYL0fCXc";
 
 let exerciseBaseUrl = "https://api.api-ninjas.com/v1/exercises";
 
