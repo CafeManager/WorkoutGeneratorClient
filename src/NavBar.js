@@ -46,24 +46,24 @@ function NavBar({ handleAPILogOut, WorkOut }) {
                             </>
                         ) : (
                             <>
-                                <a
+                                <Link
                                     style={{
                                         textDecoration: "none",
                                         margin: ".2rem",
                                     }}
-                                    href="/register"
+                                    to="/register"
                                 >
                                     Register
-                                </a>
-                                <a
-                                    href="/login"
+                                </Link>
+                                <Link
+                                    to="/login"
                                     style={{
                                         textDecoration: "none",
                                         margin: ".2rem",
                                     }}
                                 >
                                     Login
-                                </a>
+                                </Link>
                             </>
                         )}
                     </form>
